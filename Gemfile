@@ -8,7 +8,7 @@ gem 'jquery-rails'
 gem 'pagy'
 gem 'local_time'
 gem 'octicons_helper', '9.6.0'
-gem 'octokit'
+gem 'octokit', '>= 4.18.0'
 gem 'omniauth-github'
 gem 'puma'
 gem 'sassc-rails'
@@ -24,7 +24,7 @@ gem 'rgb'
 gem 'sidekiq'
 gem 'sidekiq-unique-jobs'
 gem 'sidekiq-scheduler', require: false
-gem 'rack-canonical-host'
+gem 'rack-canonical-host', '>= 1.0.0'
 gem 'sidekiq-status'
 gem 'gemoji', require: false
 gem 'bootsnap', require: false
@@ -47,7 +47,7 @@ end
 
 group :test do
   gem 'factory_bot'
-  gem 'webmock'
+  gem 'webmock', '>= 3.8.3'
   gem 'mocha'
   gem 'minitest'
   gem 'timecop'
