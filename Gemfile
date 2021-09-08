@@ -61,7 +61,7 @@ group :development do
   gem 'brakeman'
   gem 'bullet'
   gem 'binding_of_caller'
-  gem 'better_errors'
+  gem 'better_errors', '>= 2.8.0'
 end
 
 group :production do
