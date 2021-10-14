@@ -10,7 +10,7 @@ gem 'local_time'
 gem 'octicons_helper', '9.6.0'
 gem 'octokit'
 gem 'omniauth-github'
-gem 'puma'
+gem 'puma', '>= 4.3.9'
 gem 'sassc-rails'
 gem 'turbolinks'
 gem 'typhoeus'
@@ -67,5 +67,5 @@ end
 group :production do
   gem 'skylight', '4.3.1'
   gem 'lograge'
-  gem 'puma_worker_killer'
+  gem 'puma_worker_killer', '>= 0.1.1'
 end
