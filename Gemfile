@@ -14,7 +14,11 @@ gem 'pagy'
 gem 'local_time'
 gem 'octicons_helper'
 gem 'octokit'
+ snyk-fix-df78470cc20951d254d59a85747ee175
+gem 'omniauth-github', '>= 2.0.0'
+
 gem 'omniauth-github', '2.0.0'
+ master
 gem 'puma'
 gem 'sassc-rails', '>= 2.1.2'
 gem 'turbolinks'
