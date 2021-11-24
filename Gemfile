@@ -29,11 +29,11 @@ gem 'pg_search'
 gem 'jbuilder'
 gem 'rake', require: false
 gem 'rgb'
-gem 'sidekiq'
-gem 'sidekiq-unique-jobs'
-gem 'sidekiq-scheduler', require: false
+gem 'sidekiq', '>= 6.2.1'
+gem 'sidekiq-unique-jobs', '>= 6.0.22'
+gem 'sidekiq-scheduler', '>= 3.0.1', require: false
 gem 'rack-canonical-host'
-gem 'sidekiq-status'
+gem 'sidekiq-status', '>= 1.1.4'
 gem 'gemoji', require: false
 gem 'bootsnap', require: false
 gem 'bugsnag'
