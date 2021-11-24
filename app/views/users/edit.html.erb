@@ -1,17 +1,6 @@
 <div class="container user-settings">
   <div class="w-100 d-flex justify-content-between">
     <h1 class="pt-3"><%= t('users.titles.settings') %></h1>
-    <div>
-      <% if @latest_git_sha %>
-        <p class="settings-sha">
-          <%= t('users.labels.version') %>
-          <%= link_to @latest_git_sha[0..6], Octobox.config.source_repo + "/commit/#{@latest_git_sha}", target: '_blank', rel: "noopener", title: "Current Git commit SHA" %>
-          <%= link_to Octobox.config.source_repo + "/compare/#{@latest_git_sha}..master", target: '_blank', rel: "noopener", title: "Compare with latest commits on master" do %>
-            <%= octicon 'git-compare', height: 16, class:'text-default' %>
-          <% end %>
-        </p>
-      <% end %>
-    </div>
   </div>
   <hr>
 
@@ -42,7 +31,7 @@
               </td>
               <td>
                 <%= link_to octicon('pencil'), edit_pinned_search_path(pinned_search), title: t('crud_actions.edit'), data: {toggle: 'tooltip'}, class: 'mr-2' %>
-                <%= link_to octicon('trashcan'), pinned_search_path(pinned_search), title: t('crud_actions.delete'), data: {toggle: 'tooltip'}, method: :delete %>
+                <%= link_to octicon('trash'), pinned_search_path(pinned_search), title: t('crud_actions.delete'), data: {toggle: 'tooltip'}, method: :delete %>
               </td>
             </tr>
           <% end %>
@@ -103,7 +92,7 @@
     <% end %>
 
     <div class='d-flex flex-column flex-md-row'>
-      <div class="card w-100 mr-3 mb-3">
+      <div class="card w-100 mb-3 <%= 'mr-3' if Octobox.config.subjects_enabled? && Octobox.config.include_comments %>">
         <h5 class="card-header">
           <%= t('users.titles.theme') %>
         </h5>
@@ -132,6 +121,25 @@
           </div>
         </div>
       <% end %>
+    </div>
+
+    <div class='d-flex flex-column flex-md-row'>
+      <div class="card w-100 mb-3">
+        <h5 class="card-header">
+          <%= t('users.titles.advanced') %>
+        </h5>
+        <div class="card-body">
+          <div class="form-check mb-3">
+            <label class='col-form-label'>
+              <%= f.check_box :disable_confirmations, class: 'form-check-input' %>
+              Disable confirmations when muting and deleting
+            </label>
+          </div>
+
+          <%= submit_tag t('crud_actions.save'), class: 'btn btn-primary' %>
+          <%= link_to t('crud_actions.cancel'), root_path, class: 'btn btn-light' %>
+        </div>
+      </div>
     </div>
   <% end %>
 
@@ -174,7 +182,7 @@
 
       <% if Octobox.github_app? && current_user.github_app_authorized? %>
         <%= link_to "#{Octobox.config.github_domain}/settings/connections/applications/#{Rails.application.secrets.github_app_client_id}", class: 'btn btn-outline-dark' do %>
-          <%= octicon 'octoface' %>&nbsp;
+          <%= octicon 'mark-github' %>&nbsp;
           <%= t('users.actions.manage_app_access') %>
         <% end %>
       <% end %>
@@ -261,7 +269,7 @@
           <p>
             <%= t('users.notices.connect_to_github_account') %>
           </p>
-          <p><%= link_to t('users.actions.login_to_github_app'), '/auth/githubapp', class: 'btn btn-info' %></p>
+          <p><%= link_to t('users.actions.login_to_github_app'), '/auth/githubapp', class: 'btn btn-info', method: :post %></p>
         <% end %>
         <p>
           <%= t('users.notices.extra_features_and_data') %>
@@ -342,14 +350,14 @@
     <div class="card-body">
       <p><%= t('users.notices.export_import') %></p>
       <%= link_to export_path, class: 'btn btn-outline-dark' do %>
-        <%= octicon 'cloud-download' %>&nbsp;
+        <%= octicon 'desktop-download' %>&nbsp;
         <%= t('users.actions.export') %>
       <% end %>
       <% unless Octobox.io? %>
 
         <%= form_tag import_path, class: 'd-inline', multipart: true do %>
           <label class="btn btn-outline-dark mt-2">
-            <%= octicon 'cloud-upload' %>&nbsp;
+            <%= octicon 'upload' %>&nbsp;
             <%= t('users.actions.import') %>
           <span style="display:none;">
             <%= file_field_tag :file, required: true, onchange: "form.submit();" %>
@@ -368,7 +376,7 @@
       <p><%= t('users.notices.deleting_account_removes_all_data') %></p>
       <p><%= t('users.notices.subsequent_logins') %></p>
       <%= link_to current_user, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to do this?' } do %>
-        <%= octicon 'trashcan', class: 'inverse' %>&nbsp;
+        <%= octicon 'trash', class: 'inverse' %>&nbsp;
         <%= t('users.actions.delete_account') %>
       <% end %>
     </div>
