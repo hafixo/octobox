@@ -40,17 +40,13 @@ You can host your own instance of Octobox using Heroku.
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/octobox/octobox)
 
 Heroku will ask you to provide an OAuth client ID and secret, which you can get by
-[registering a new OAuth application on GitHub](https://github.com/settings/applications/new)]. When creating the OAuth application:
+[registering a new OAuth application on GitHub](https://github.com/settings/applications/new). When creating the OAuth application:
 
 * Make sure you enable the `notifications` scope on it (you will also need the `read:org` scope if you enable restricted access).
 * You can provide Homepage and Authorization URLs by using the Heroku app name you choose. By default, a Heroku app is available at its Heroku domain, which has the form `[name of app].herokuapp.com`.
   The callback url would then be `[name of app].herokuapp.com/auth/github/callback`.
 
 For more help with setting up an OAuth application on GitHub, see below.
-
-After deploying the app to heroku, enable the `runtime-dyno-metadata` feature to enable the changelog feature:
-
-    heroku labs:enable runtime-dyno-metadata
 
 ## Deployment to OpenShift Online
 
@@ -72,13 +68,13 @@ Protip: To generate a key, you can use `bin/rails secret | cut -c1-32`
 First things first, you'll need to fork and clone Octobox repository to
 your local machine.
 
-Secondly, you'll need to install Ruby 2.7.1. I recommend using the excellent [rbenv](https://github.com/rbenv/rbenv),
+Secondly, you'll need to install Ruby 3.0.2. I recommend using the excellent [rbenv](https://github.com/rbenv/rbenv),
 and [ruby-build](https://github.com/rbenv/ruby-build):
 
 ```bash
 brew install rbenv ruby-build
-rbenv install 2.7.1
-rbenv global 2.7.1
+rbenv install 3.0.2
+rbenv global 3.0.2
 ```
 
 Next, you'll need to make sure that you have PostgreSQL installed. This can be

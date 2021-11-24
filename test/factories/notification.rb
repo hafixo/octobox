@@ -3,7 +3,7 @@ FactoryBot.define do
     sequence(:github_id, 1000000) { |n| n }
     repository_id { 930405 }
     repository_full_name { "octobox/octobox" }
-    repository_owner_name { "andrew" }
+    repository_owner_name { "octobox" }
     subject_title { "Test" }
     sequence(:subject_url) { |n| "https://api.github.com/repos/#{repository_full_name}/issues/#{n}" }
     subject_type { "Issue" }
@@ -25,7 +25,7 @@ FactoryBot.define do
 
     factory :morty_updated do
       unread { false }
-      github_id { 420 }
+      github_id { 2147650093 }
       url { "https://api.github.com/notifications/threads/420" }
       subject_url { "https://api.github.com/repos/octobox/octobox/issues/56" }
       archived { true }
