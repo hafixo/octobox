@@ -138,7 +138,6 @@ For other updates, follow the project on Twitter: [@octoboxio](https://twitter.c
  * Fork the project.
  * Make your feature addition or bug fix.
  * Add tests for it. This is important so we don't break it in a future version unintentionally.
-   * You can use `bundle exec guard` if you'd like the relevant tests to automatically run each time a file is modified.
  * Send a pull request. Bonus points for topic branches.
 
 ### Vulnerability disclosure
@@ -151,4 +150,4 @@ Please note that this project is released with a [Contributor Code of Conduct](d
 
 ## Copyright
 
-[GNU Affero License](LICENSE.txt) © 2018 [Andrew Nesbitt](https://github.com/andrew).
+[GNU Affero License](LICENSE.txt) © 2021 [Andrew Nesbitt](https://github.com/andrew).
